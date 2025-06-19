@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advocacia & Consultoria - Site Institucional</title>
+    <title>Advocacia & Consultoria - Site Institucional Avançado</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,11 +13,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons (CORRIGIDO) -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Estilos personalizados */
+        /* Estilos personalizados e para animações */
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
@@ -41,264 +41,249 @@
             height: 3px;
             background-color: #c0a062; /* Dourado */
         }
+        
+        /* Estilos para o FAQ interativo */
+        .faq-item .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+         .faq-item.open .faq-answer {
+            max-height: 1000px;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Classes para animação de scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Cabeçalho e Navegação -->
     <header id="header" class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-gray-800 hover:text-[#c0a062] transition-colors">Advocacia & Consultoria</a>
-            <nav class="hidden md:flex items-center space-x-6">
-                <a href="#inicio" class="text-gray-600 hover:text-[#c0a062] transition-colors">Início</a>
-                <a href="#quem-somos" class="text-gray-600 hover:text-[#c0a062] transition-colors">Quem Somos</a>
-                <a href="#areas-atuacao" class="text-gray-600 hover:text-[#c0a062] transition-colors">Áreas de Atuação</a>
-                <a href="#blog" class="text-gray-600 hover:text-[#c0a062] transition-colors">Blog</a>
-                <a href="#contato" class="bg-[#c0a062] text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all">Contato</a>
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl lg:text-2xl font-bold text-gray-800 hover:text-[#c0a062] transition-colors">Advocacia & Consultoria</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="text-base font-medium text-gray-600 hover:text-[#c0a062] transition-colors">Início</a>
+                <a href="#quem-somos" class="text-base font-medium text-gray-600 hover:text-[#c0a062] transition-colors">Quem Somos</a>
+                <a href="#areas-atuacao" class="text-base font-medium text-gray-600 hover:text-[#c0a062] transition-colors">Áreas de Atuação</a>
+                <a href="#blog" class="text-base font-medium text-gray-600 hover:text-[#c0a062] transition-colors">Blog</a>
+                <a href="#contato" class="bg-[#c0a062] text-white px-5 py-2 rounded-md hover:bg-opacity-90 transition-all text-base font-medium">Contato</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden">
                 <i data-lucide="menu" class="w-6 h-6 text-gray-800"></i>
             </button>
         </div>
         <!-- Menu Mobile -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <a href="#inicio" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Início</a>
-            <a href="#quem-somos" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Quem Somos</a>
-            <a href="#areas-atuacao" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Áreas de Atuação</a>
-            <a href="#blog" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Blog</a>
-            <a href="#contato" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Contato</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <a href="#inicio" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Início</a>
+            <a href="#quem-somos" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Quem Somos</a>
+            <a href="#areas-atuacao" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Áreas de Atuação</a>
+            <a href="#blog" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Blog</a>
+            <a href="#contato" class="block py-3 px-6 text-gray-600 hover:bg-gray-100">Contato</a>
         </div>
     </header>
 
     <main>
         <!-- Seção Inicial (Hero) -->
-        <section id="inicio" class="hero-section text-white py-24 md:py-32">
+        <section id="inicio" class="hero-section text-white py-24 md:py-40">
             <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">Assessoria Jurídica de Excelência</h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up">Compromisso, ética e resultados. Defendemos seus direitos com expertise e dedicação em diversas áreas da advocacia.</p>
-                <a href="#contato" class="bg-[#c0a062] text-white font-bold py-3 px-8 rounded-lg hover:bg-opacity-90 transition-transform transform hover:scale-105">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Assessoria Jurídica de Excelência</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">Compromisso, ética e resultados. Defendemos seus direitos com expertise e dedicação em diversas áreas da advocacia.</p>
+                <a href="#contato" class="bg-[#c0a062] text-white font-bold py-3 px-8 rounded-lg hover:bg-opacity-90 transition-transform transform hover:scale-105 text-lg">
                     Fale com um Especialista
                 </a>
             </div>
         </section>
 
         <!-- Seção Quem Somos -->
-        <section id="quem-somos" class="py-20">
+        <section id="quem-somos" class="py-20 fade-in-section">
             <div class="container mx-auto px-6">
                 <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800">Quem Somos</h2>
-                <div class="flex flex-col md:flex-row items-center mt-12">
-                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
-                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">Nossa História e Filosofia</h3>
-                        <p class="text-gray-600 leading-relaxed mb-4">
-                            Fundado em 2010, nosso escritório nasceu do desejo de oferecer uma advocacia moderna e eficiente. Acreditamos em uma abordagem personalizada, onde cada caso é tratado com a máxima atenção e rigor técnico.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed">
-                            Nossa filosofia de trabalho é pautada na transparência, na comunicação constante com o cliente e na busca incansável pela melhor solução jurídica. Nosso maior ativo é a confiança que depositam em nosso trabalho.
-                        </p>
+                <div class="flex flex-col md:flex-row items-center mt-12 gap-8 md:gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x450/e2e8f0/334155?text=Nosso+Escritório" alt="[Imagem do escritório de advocacia]" class="rounded-lg shadow-xl w-full h-auto">
                     </div>
                     <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x400/e2e8f0/334155?text=Nossa+Equipe" alt="[Imagem da equipe do escritório]" class="rounded-lg shadow-xl w-full h-auto">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">Nossa História e Filosofia</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Fundado há mais de uma década, nosso escritório nasceu do desejo de oferecer uma advocacia moderna, estratégica e, acima de tudo, humana. Acreditamos em uma abordagem personalizada, onde cada cliente e cada caso recebem a máxima atenção e o mais profundo rigor técnico.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Nossa filosofia de trabalho é pautada na transparência, na comunicação constante e na busca incansável pela melhor solução jurídica. Construímos relações de confiança duradouras, pois entendemos que por trás de cada processo existem pessoas e seus projetos de vida. Nosso maior ativo é a satisfação e a tranquilidade dos nossos clientes.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Seção Áreas de Atuação / Serviços -->
-        <section id="areas-atuacao" class="py-20 bg-gray-100">
+        <!-- NOVA SEÇÃO: Contadores Animados -->
+        <section id="stats" class="py-20 bg-gray-800 text-white fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <h3 class="text-4xl md:text-5xl font-bold text-[#c0a062] counter" data-target="15">0</h3>
+                        <p class="mt-2 text-gray-300">Anos de Experiência</p>
+                    </div>
+                    <div>
+                        <h3 class="text-4xl md:text-5xl font-bold text-[#c0a062] counter" data-target="98">0</h3>
+                        <p class="mt-2 text-gray-300">% de Casos Ganhos</p>
+                    </div>
+                    <div>
+                        <h3 class="text-4xl md:text-5xl font-bold text-[#c0a062] counter" data-target="2500">0</h3>
+                        <p class="mt-2 text-gray-300">+ Clientes Atendidos</p>
+                    </div>
+                    <div>
+                        <h3 class="text-4xl md:text-5xl font-bold text-[#c0a062] counter" data-target="10">0</h3>
+                        <p class="mt-2 text-gray-300">Advogados na Equipe</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Nossa Equipe -->
+        <section id="equipe" class="py-20 bg-gray-100 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800">Nossa Equipe</h2>
+                <p class="text-center max-w-2xl mx-auto mt-4 mb-12 text-gray-600">Conheça os profissionais dedicados que estão prontos para defender seus interesses.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300"><img src="https://placehold.co/200x200/c0a062/ffffff?text=A" alt="[Foto do Advogado 1]" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-200"><h3 class="text-xl font-bold">Dr. Carlos Andrade</h3><p class="text-[#c0a062] font-semibold mb-2">Sócio Fundador | Especialista em Direito Empresarial</p><p class="text-gray-600 text-sm">Com mais de 20 anos de experiência, Dr. Carlos lidera nossa prática empresarial, oferecendo consultoria estratégica para empresas de todos os portes.</p></div>
+                     <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300"><img src="https://placehold.co/200x200/c0a062/ffffff?text=B" alt="[Foto da Advogada 2]" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-200"><h3 class="text-xl font-bold">Dra. Beatriz Lima</h3><p class="text-[#c0a062] font-semibold mb-2">Sócia | Especialista em Direito de Família e Sucessões</p><p class="text-gray-600 text-sm">Dra. Beatriz é reconhecida por sua abordagem empática e assertiva em casos complexos de família, buscando sempre o bem-estar dos envolvidos.</p></div>
+                     <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300"><img src="https://placehold.co/200x200/c0a062/ffffff?text=C" alt="[Foto do Advogado 3]" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-200"><h3 class="text-xl font-bold">Dr. Ricardo Souza</h3><p class="text-[#c0a062] font-semibold mb-2">Advogado Associado | Especialista em Direito Trabalhista</p><p class="text-gray-600 text-sm">Focado na defesa dos direitos de trabalhadores e empresas, Dr. Ricardo atua com excelência tanto no preventivo quanto no contencioso trabalhista.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Áreas de Atuação -->
+        <section id="areas-atuacao" class="py-20 fade-in-section">
             <div class="container mx-auto px-6">
                 <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800">Áreas de Atuação</h2>
                 <p class="text-center max-w-2xl mx-auto mt-4 mb-12 text-gray-600">Oferecemos uma gama completa de serviços jurídicos para pessoas físicas e jurídicas. Conheça nossas principais especialidades:</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Card de Atuação -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex justify-center mb-4">
-                            <div class="bg-[#c0a062] p-4 rounded-full">
-                                <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Direito Empresarial</h3>
-                        <p class="text-gray-600">Assessoria completa em contratos, societário, fusões e aquisições, garantindo segurança jurídica para o seu negócio.</p>
-                    </div>
-                    <!-- Card de Atuação -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex justify-center mb-4">
-                            <div class="bg-[#c0a062] p-4 rounded-full">
-                                <i data-lucide="gavel" class="w-8 h-8 text-white"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Direito Trabalhista</h3>
-                        <p class="text-gray-600">Atuação estratégica na defesa dos interesses de empregados e empregadores, tanto no consultivo quanto no contencioso.</p>
-                    </div>
-                    <!-- Card de Atuação -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex justify-center mb-4">
-                            <div class="bg-[#c0a062] p-4 rounded-full">
-                                <i data-lucide="users" class="w-8 h-8 text-white"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Direito de Família</h3>
-                        <p class="text-gray-600">Condução de casos de divórcio, partilha de bens, guarda de filhos e pensão alimentícia com sensibilidade e técnica.</p>
-                    </div>
-                    <!-- Card de Atuação -->
-                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex justify-center mb-4">
-                            <div class="bg-[#c0a062] p-4 rounded-full">
-                                <i data-lucide="landmark" class="w-8 h-8 text-white"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Direito Cível</h3>
-                        <p class="text-gray-600">Soluções para questões de responsabilidade civil, obrigações, contratos e direitos do consumidor.</p>
-                    </div>
-                     <!-- Card de Atuação -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex justify-center mb-4">
-                            <div class="bg-[#c0a062] p-4 rounded-full">
-                                <i data-lucide="shield" class="w-8 h-8 text-white"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Direito Tributário</h3>
-                        <p class="text-gray-600">Planejamento tributário, recuperação de créditos e defesa em execuções fiscais para otimizar a carga tributária.</p>
-                    </div>
-                     <!-- Card de Atuação -->
-                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex justify-center mb-4">
-                            <div class="bg-[#c0a062] p-4 rounded-full">
-                                <i data-lucide="home" class="w-8 h-8 text-white"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Direito Imobiliário</h3>
-                        <p class="text-gray-600">Consultoria em compra e venda, locação, regularização de imóveis e incorporações.</p>
-                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"><div class="flex justify-center mb-4"><div class="bg-[#c0a062] p-4 rounded-full"><i data-lucide="briefcase" class="w-8 h-8 text-white"></i></div></div><h3 class="text-xl font-bold mb-2">Direito Empresarial</h3><p class="text-gray-600">Assessoria completa em contratos, societário, fusões e aquisições, garantindo segurança jurídica para o seu negócio.</p></div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"><div class="flex justify-center mb-4"><div class="bg-[#c0a062] p-4 rounded-full"><i data-lucide="gavel" class="w-8 h-8 text-white"></i></div></div><h3 class="text-xl font-bold mb-2">Direito Trabalhista</h3><p class="text-gray-600">Atuação estratégica na defesa dos interesses de empregados e empregadores, tanto no consultivo quanto no contencioso.</p></div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"><div class="flex justify-center mb-4"><div class="bg-[#c0a062] p-4 rounded-full"><i data-lucide="users" class="w-8 h-8 text-white"></i></div></div><h3 class="text-xl font-bold mb-2">Direito de Família</h3><p class="text-gray-600">Condução de casos de divórcio, partilha de bens, guarda de filhos e pensão alimentícia com sensibilidade e técnica.</p></div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"><div class="flex justify-center mb-4"><div class="bg-[#c0a062] p-4 rounded-full"><i data-lucide="landmark" class="w-8 h-8 text-white"></i></div></div><h3 class="text-xl font-bold mb-2">Direito Cível</h3><p class="text-gray-600">Soluções para questões de responsabilidade civil, obrigações, contratos e direitos do consumidor.</p></div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"><div class="flex justify-center mb-4"><div class="bg-[#c0a062] p-4 rounded-full"><i data-lucide="shield" class="w-8 h-8 text-white"></i></div></div><h3 class="text-xl font-bold mb-2">Direito Tributário</h3><p class="text-gray-600">Planejamento tributário, recuperação de créditos e defesa em execuções fiscais para otimizar a carga tributária.</p></div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"><div class="flex justify-center mb-4"><div class="bg-[#c0a062] p-4 rounded-full"><i data-lucide="home" class="w-8 h-8 text-white"></i></div></div><h3 class="text-xl font-bold mb-2">Direito Imobiliário</h3><p class="text-gray-600">Consultoria em compra e venda, locação, regularização de imóveis e incorporações imobiliárias.</p></div>
                 </div>
             </div>
         </section>
 
+        <!-- NOVA SEÇÃO: Nossos Diferenciais -->
+        <section id="diferenciais" class="py-20 bg-gray-100 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800">Nossos Diferenciais</h2>
+                <p class="text-center max-w-2xl mx-auto mt-4 mb-12 text-gray-600">Entenda por que somos a escolha certa para representar seus interesses.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center p-4">
+                        <i data-lucide="user-check" class="w-12 h-12 text-[#c0a062] mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Atendimento Personalizado</h3>
+                        <p class="text-gray-600">Cada cliente é único. Oferecemos soluções jurídicas sob medida para suas necessidades específicas.</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <i data-lucide="eye" class="w-12 h-12 text-[#c0a062] mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Transparência Total</h3>
+                        <p class="text-gray-600">Mantemos você informado sobre cada etapa do seu processo, com comunicação clara e honesta.</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <i data-lucide="zap" class="w-12 h-12 text-[#c0a062] mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Agilidade e Eficiência</h3>
+                        <p class="text-gray-600">Utilizamos as melhores práticas e tecnologias para otimizar o tempo e buscar resultados rápidos.</p>
+                    </div>
+                     <div class="text-center p-4">
+                        <i data-lucide="brain-circuit" class="w-12 h-12 text-[#c0a062] mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Expertise Comprovada</h3>
+                        <p class="text-gray-600">Nossa equipe é formada por especialistas renomados em suas respectivas áreas de atuação.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <!-- Seção Blog -->
-        <section id="blog" class="py-20">
+        <section id="blog" class="py-20 fade-in-section">
             <div class="container mx-auto px-6">
                 <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800">Blog & Notícias</h2>
                 <p class="text-center max-w-2xl mx-auto mt-4 mb-12 text-gray-600">Mantenha-se informado com nossos artigos e análises sobre o universo jurídico. Conteúdo relevante para proteger seus direitos.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Post do Blog -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                        <img src="https://placehold.co/600x400/d1d5db/334155?text=Reforma+Tributaria" alt="[Imagem sobre a reforma tributária]" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <span class="text-sm text-[#c0a062] font-semibold">DIREITO TRIBUTÁRIO</span>
-                            <h3 class="text-xl font-bold my-2">Reforma Tributária: O que muda para sua empresa?</h3>
-                            <p class="text-gray-600 text-sm mb-4">Entenda os principais pontos da reforma e como ela pode impactar a carga de impostos do seu negócio...</p>
-                            <a href="#" class="font-semibold text-[#c0a062] hover:underline">Leia Mais &rarr;</a>
-                        </div>
-                    </div>
-                    <!-- Post do Blog -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                        <img src="https://placehold.co/600x400/d1d5db/334155?text=Contrato+de+Trabalho" alt="[Imagem sobre contrato de trabalho]" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <span class="text-sm text-[#c0a062] font-semibold">DIREITO TRABALHISTA</span>
-                            <h3 class="text-xl font-bold my-2">Cuidados essenciais ao redigir um contrato de trabalho</h3>
-                            <p class="text-gray-600 text-sm mb-4">Um contrato de trabalho bem elaborado é a chave para evitar litígios futuros. Saiba o que não pode faltar...</p>
-                            <a href="#" class="font-semibold text-[#c0a062] hover:underline">Leia Mais &rarr;</a>
-                        </div>
-                    </div>
-                    <!-- Post do Blog -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                        <img src="https://placehold.co/600x400/d1d5db/334155?text=Divorcio+Extrajudicial" alt="[Imagem sobre divórcio]" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <span class="text-sm text-[#c0a062] font-semibold">DIREITO DE FAMÍLIA</span>
-                            <h3 class="text-xl font-bold my-2">Divórcio extrajudicial: agilidade e menos desgaste</h3>
-                            <p class="text-gray-600 text-sm mb-4">Descubra quando é possível realizar o divórcio diretamente no cartório, de forma mais rápida e simples...</p>
-                            <a href="#" class="font-semibold text-[#c0a062] hover:underline">Leia Mais &rarr;</a>
-                        </div>
-                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"><img src="https://placehold.co/600x400/d1d5db/334155?text=Reforma+Tributaria" alt="[Imagem sobre a reforma tributária]" class="w-full h-48 object-cover"><div class="p-6"><span class="text-sm text-[#c0a062] font-semibold">DIREITO TRIBUTÁRIO</span><h3 class="text-xl font-bold my-2">Reforma Tributária: O que muda para sua empresa?</h3><p class="text-gray-600 text-sm mb-4">Entenda os principais pontos da reforma e como ela pode impactar a carga de impostos do seu negócio...</p><a href="#" class="font-semibold text-[#c0a062] hover:underline">Leia Mais &rarr;</a></div></div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"><img src="https://placehold.co/600x400/d1d5db/334155?text=Contrato+de+Trabalho" alt="[Imagem sobre contrato de trabalho]" class="w-full h-48 object-cover"><div class="p-6"><span class="text-sm text-[#c0a062] font-semibold">DIREITO TRABALHISTA</span><h3 class="text-xl font-bold my-2">Cuidados essenciais ao redigir um contrato de trabalho</h3><p class="text-gray-600 text-sm mb-4">Um contrato de trabalho bem elaborado é a chave para evitar litígios futuros. Saiba o que não pode faltar...</p><a href="#" class="font-semibold text-[#c0a062] hover:underline">Leia Mais &rarr;</a></div></div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"><img src="https://placehold.co/600x400/d1d5db/334155?text=Divorcio+Extrajudicial" alt="[Imagem sobre divórcio]" class="w-full h-48 object-cover"><div class="p-6"><span class="text-sm text-[#c0a062] font-semibold">DIREITO DE FAMÍLIA</span><h3 class="text-xl font-bold my-2">Divórcio extrajudicial: agilidade e menos desgaste</h3><p class="text-gray-600 text-sm mb-4">Descubra quando é possível realizar o divórcio diretamente no cartório, de forma mais rápida e simples...</p><a href="#" class="font-semibold text-[#c0a062] hover:underline">Leia Mais &rarr;</a></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Depoimentos -->
+        <section id="depoimentos" class="py-20 bg-gray-100 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800">O que nossos clientes dizem</h2>
+                <p class="text-center max-w-2xl mx-auto mt-4 mb-12 text-gray-600">A confiança e o sucesso dos nossos clientes são nosso maior orgulho.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg"><i data-lucide="quote" class="w-8 h-8 text-[#c0a062] mb-4"></i><p class="text-gray-600 italic mb-6">"Encontrei na Advocacia & Consultoria a segurança que minha empresa precisava. A assessoria em direito empresarial foi impecável e nos ajudou a crescer com solidez."</p><div class="flex items-center"><div class="ml-4"><p class="font-bold">João D. | CEO de Startup</p><p class="text-sm text-gray-500">Cliente de Direito Empresarial</p></div></div></div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg"><i data-lucide="quote" class="w-8 h-8 text-[#c0a062] mb-4"></i><p class="text-gray-600 italic mb-6">"Passei por um processo de divórcio muito delicado e a Dra. Beatriz foi fundamental. Conduziu tudo com muita competência e humanidade, me trazendo paz e segurança."</p><div class="flex items-center"><div class="ml-4"><p class="font-bold">Maria S. | Servidora Pública</p><p class="text-sm text-gray-500">Cliente de Direito de Família</p></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção FAQ -->
+        <section id="faq" class="py-20 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800">Perguntas Frequentes</h2>
+                <p class="text-center max-w-2xl mx-auto mt-4 mb-12 text-gray-600">Esclareça aqui algumas das dúvidas mais comuns sobre nossos serviços e atuação.</p>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="faq-item border border-gray-200 rounded-lg bg-white overflow-hidden"><div class="faq-question flex justify-between items-center p-5 cursor-pointer"><h3 class="font-semibold text-lg">Como funciona a primeira consulta?</h3><i data-lucide="plus" class="faq-icon w-6 h-6 text-[#c0a062] transition-transform duration-300"></i></div><div class="faq-answer px-5 pb-5 text-gray-600"><p>A primeira consulta é uma conversa inicial para entendermos seu caso, analisarmos os documentos pertinentes e apresentarmos as possíveis soluções jurídicas. É o momento de esclarecer todas as suas dúvidas iniciais e definirmos os próximos passos.</p></div></div>
+                    <div class="faq-item border border-gray-200 rounded-lg bg-white overflow-hidden"><div class="faq-question flex justify-between items-center p-5 cursor-pointer"><h3 class="font-semibold text-lg">Quais são os honorários cobrados?</h3><i data-lucide="plus" class="faq-icon w-6 h-6 text-[#c0a062] transition-transform duration-300"></i></div><div class="faq-answer px-5 pb-5 text-gray-600"><p>Trabalhamos com total transparência. Os honorários são definidos com base na complexidade do caso, no tempo estimado de dedicação e nos valores de referência da OAB. Apresentamos uma proposta de honorários clara e detalhada antes de iniciar qualquer trabalho.</p></div></div>
+                    <div class="faq-item border border-gray-200 rounded-lg bg-white overflow-hidden"><div class="faq-question flex justify-between items-center p-5 cursor-pointer"><h3 class="font-semibold text-lg">Vocês atuam em outras cidades ou estados?</h3><i data-lucide="plus" class="faq-icon w-6 h-6 text-[#c0a062] transition-transform duration-300"></i></div><div class="faq-answer px-5 pb-5 text-gray-600"><p>Sim. Embora nossa sede seja em [Sua Cidade], contamos com uma rede de parceiros e tecnologia para atuar em todo o território nacional, especialmente em processos eletrônicos e consultorias remotas, garantindo a mesma qualidade de atendimento.</p></div></div>
                 </div>
             </div>
         </section>
 
         <!-- Seção de Contato -->
-        <section id="contato" class="py-20 bg-gray-100">
+        <section id="contato" class="py-20 bg-gray-100 fade-in-section">
             <div class="container mx-auto px-6">
                 <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800">Entre em Contato</h2>
                 <p class="text-center max-w-2xl mx-auto mt-4 mb-12 text-gray-600">Estamos à disposição para esclarecer suas dúvidas e agendar uma consulta. Preencha o formulário ou utilize um de nossos canais de atendimento.</p>
-                <div class="flex flex-col lg:flex-row bg-white p-8 rounded-lg shadow-xl">
-                    <!-- Formulário -->
-                    <div class="lg:w-1/2 lg:pr-10 mb-10 lg:mb-0">
-                        <form action="#" method="POST">
-                            <div class="mb-4">
-                                <label for="name" class="block text-gray-700 font-medium mb-2">Nome Completo</label>
-                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c0a062]" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
-                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c0a062]" required>
-                            </div>
-                             <div class="mb-4">
-                                <label for="phone" class="block text-gray-700 font-medium mb-2">Telefone</label>
-                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c0a062]">
-                            </div>
-                            <div class="mb-6">
-                                <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
-                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c0a062]" required></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-[#c0a062] text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all">
-                                Enviar Mensagem
-                            </button>
-                        </form>
-                    </div>
-                    <!-- Informações de Contato -->
-                    <div class="lg:w-1/2 lg:pl-10 lg:border-l lg:border-gray-200">
-                         <div class="space-y-6">
-                            <div class="flex items-start">
-                                <i data-lucide="map-pin" class="w-6 h-6 text-[#c0a062] mt-1 mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-lg">Endereço</h4>
-                                    <p class="text-gray-600">Av. Principal, 123, Sala 45, Centro<br>Sua Cidade, Estado, CEP 12345-678</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i data-lucide="phone" class="w-6 h-6 text-[#c0a062] mt-1 mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-lg">Telefone</h4>
-                                    <p class="text-gray-600">(62) 99999-8888</p>
-                                </div>
-                            </div>
-                             <div class="flex items-start">
-                                <i data-lucide="mail" class="w-6 h-6 text-[#c0a062] mt-1 mr-4"></i>
-                                <div>
-                                    <h4 class="font-bold text-lg">E-mail</h4>
-                                    <p class="text-gray-600">contato@advocaciaconsultoria.com</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-8">
-                             <iframe 
-                                class="w-full h-64 rounded-lg"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197554999918!2d-46.65657158448861!3d-23.56133058468249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0x206c480111e1eb84!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1678886453950!5m2!1spt-BR!2sbr" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-                    </div>
+                <div class="flex flex-col lg:flex-row bg-white p-6 md:p-8 rounded-lg shadow-xl">
+                    <div class="lg:w-1/2 lg:pr-10 mb-10 lg:mb-0"><form action="#" method="POST"><div class="mb-4"><label for="name" class="block text-gray-700 font-medium mb-2">Nome Completo</label><input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c0a062]" required></div><div class="mb-4"><label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label><input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c0a062]" required></div><div class="mb-4"><label for="phone" class="block text-gray-700 font-medium mb-2">Telefone</label><input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c0a062]"></div><div class="mb-6"><label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label><textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c0a062]" required></textarea></div><button type="submit" class="w-full bg-[#c0a062] text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all">Enviar Mensagem</button></form></div>
+                    <div class="lg:w-1/2 lg:pl-10 lg:border-l lg:border-gray-200"><div class="space-y-6"><div class="flex items-start"><i data-lucide="map-pin" class="w-6 h-6 text-[#c0a062] mt-1 mr-4 flex-shrink-0"></i><div><h4 class="font-bold text-lg">Endereço</h4><p class="text-gray-600">Av. Principal, 123, Sala 45, Centro<br>Sua Cidade, Estado, CEP 12345-678</p></div></div><div class="flex items-start"><i data-lucide="phone" class="w-6 h-6 text-[#c0a062] mt-1 mr-4 flex-shrink-0"></i><div><h4 class="font-bold text-lg">Telefone & WhatsApp</h4><p class="text-gray-600">(62) 99999-8888</p></div></div><div class="flex items-start"><i data-lucide="mail" class="w-6 h-6 text-[#c0a062] mt-1 mr-4 flex-shrink-0"></i><div><h4 class="font-bold text-lg">E-mail</h4><p class="text-gray-600">contato@advocaciaconsultoria.com</p></div></div></div><div class="mt-8"><iframe class="w-full h-64 rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197554999918!2d-46.65657158448861!3d-23.56133058468249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0x206c480111e1eb84!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1678886453950!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Rodapé -->
-    <footer class="bg-gray-800 text-white py-10">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Advocacia & Consultoria. Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-400 mt-2">Desenvolvido como exemplo de site institucional.</p>
-            <div class="flex justify-center space-x-4 mt-4">
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-10 text-center">
+             <a href="#" class="text-2xl font-bold text-white hover:text-[#c0a062] transition-colors mb-6 inline-block">Advocacia & Consultoria</a>
+            <div class="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6">
+                 <a href="#inicio" class="text-gray-300 hover:text-white transition-colors">Início</a>
+                 <a href="#quem-somos" class="text-gray-300 hover:text-white transition-colors">Quem Somos</a>
+                 <a href="#areas-atuacao" class="text-gray-300 hover:text-white transition-colors">Áreas de Atuação</a>
+                 <a href="#blog" class="text-gray-300 hover:text-white transition-colors">Blog</a>
+                 <a href="#contato" class="text-gray-300 hover:text-white transition-colors">Contato</a>
+            </div>
+            <div class="flex justify-center space-x-6 mb-8">
                  <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
                  <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
                  <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
             </div>
+            <p class="text-sm text-gray-400">&copy; 2024 Advocacia & Consultoria. Todos os direitos reservados.</p>
+            <p class="text-xs text-gray-500 mt-2">Desenvolvido como exemplo de site institucional.</p>
         </div>
     </footer>
     
     <script>
-        // Renderiza os ícones Lucide
+        // Renderiza os ícones Lucide após o carregamento da página
         lucide.createIcons();
 
         // Menu Mobile Toggle
@@ -308,7 +293,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Fechar menu mobile ao clicar no link
+        // Fechar menu mobile ao clicar em um link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -324,6 +309,67 @@
                 });
             });
         });
+
+        // Funcionalidade do FAQ (Accordion)
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+                // Opcional: fechar todos os outros antes de abrir o clicado
+                // faqItems.forEach(i => i.classList.remove('open'));
+                if (!isOpen) {
+                    item.classList.add('open');
+                } else {
+                    item.classList.remove('open');
+                }
+            });
+        });
+
+        // Lógica para animações de scroll e contadores
+        const animatedSections = document.querySelectorAll('.fade-in-section');
+        const statsSection = document.getElementById('stats');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+
+                    // Inicia contadores se a seção de stats estiver visível
+                    if (entry.target.id === 'stats') {
+                        const counters = entry.target.querySelectorAll('.counter');
+                        counters.forEach(counter => {
+                            // Evita reiniciar a animação
+                            if (counter.dataset.animated) return;
+                            counter.dataset.animated = true;
+
+                            const target = +counter.getAttribute('data-target');
+                            const duration = 1500; // 1.5 segundos
+                            const stepTime = Math.abs(Math.floor(duration / target));
+                            let current = 0;
+                            const step = () => {
+                                current += Math.ceil(target / (duration / 16));
+                                if (current > target) {
+                                    current = target;
+                                }
+                                counter.innerText = Math.floor(current).toLocaleString('pt-BR');
+                                if (current < target) {
+                                    requestAnimationFrame(step);
+                                }
+                            };
+                            step();
+                        });
+                    }
+                    // Opcional: parar de observar depois que a animação ocorreu
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); // A animação começa quando 10% do elemento está visível
+
+        animatedSections.forEach(section => {
+            observer.observe(section);
+        });
+
     </script>
 
 </body>
